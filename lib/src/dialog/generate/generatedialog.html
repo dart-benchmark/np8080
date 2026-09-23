@@ -1,0 +1,29 @@
+<div id="overlay" [hidden]="!showDialog">
+    <div class="dialogPanel" [ngClass]="getClass()+' '+getBorderClass()">
+        <div (click)="close()" class="closeCross">X</div>
+        <div class="header" [ngClass]="getHeaderClass()">Generate Text</div>
+
+        <div style="text-align: center;padding: 10px" [ngClass]="getClass()">
+
+            <label>Repeat</label>
+            <input type="text" placeholder="Type text here..." [(ngModel)]="textToRepeat" id="repeatTextbox">
+            <input type="number" [(ngModel)]="repeatCount" min="1"> Times
+            <br/>
+            <input type="checkbox" [(ngModel)]="newLineAfter"> Add a newline after each item
+            <br/>
+            <textarea class="previewText" readonly [ngModel]="getPreview()" placeholder="Preview will appear here"></textarea>
+            <div id="generatePreviewCard" class="previewText"></div>
+
+            <div class="footer">
+                <button class="actionButton" (click)="richPreviewHandler()">Rich Preview</button>
+                <button class="actionButton" (click)="openReferenceLinkHandler()">Open As Link</button>
+                <button class="actionButton" (click)="prependText()">Prepend</button>
+                <button class="actionButton" (click)="insertCurrentPosition()">Insert</button>
+                <button class="actionButton" (click)="appendText()">Append</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="closeButton" (click)="closeTheDialog()" style="visibility: hidden">Peek!</button>
+                <button class="closeButton  light-primary-color" (click)="closeTheDialog()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

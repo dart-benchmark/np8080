@@ -1,0 +1,15 @@
+<div class="fullScreenViewPanel" [hidden]="!showComponent" [ngClass]="getClass()">
+    <div style="text-align: left;padding: 5px;padding-left:30px;font-size: small">
+        <button (click)="close()" class="closeTextButton">Close</button>
+        <div style="padding-top: 4px;"><input type="checkbox" [(ngModel)]="lockScrolling"> Lock scrolling</div>
+    </div>
+    <div style="padding-top: 5px;height:100%;">
+    <textarea id="leftText" [ngClass]="getDocumentClass()+' '+getBorderClass()"
+              (scroll)="scrollLeft($event)"
+              style="width:calc(47%);height:calc(100% - 50px);display: inline-block" readonly>{{note1.text}}</textarea>
+        <textarea id="rightText" [ngClass]="getDocumentClass()+ ' '+getBorderClass()"
+                  (scroll)="scrollRight($event)"
+                  style="width:calc(47%);height:calc(100% - 50px);display: inline-block"
+                  readonly>{{note2.text}}</textarea>
+    </div>
+</div>

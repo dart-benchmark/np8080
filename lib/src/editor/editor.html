@@ -1,0 +1,37 @@
+<div style="display: flex;  flex-flow: column;height: 100vh;" [ngClass]="getClass()">
+
+    <div class="mainEditorDisplay">
+        <textarea onkeydown="if(event.keyCode===33||event.keyCode===34){event.stopPropagation();return false;}" [(ngModel)]="note.text" (keyup)="changeHandler()" (keydown)="keyHandler($event)"
+                  [ngStyle]="{width: showPreview ? '47%':'calc(100% - 18px)'}"
+                  tabindex="1" id="nptextbox"
+                  [ngClass]="getDocumentClass()+' '+getBorderClass()"
+        ></textarea>
+
+        <markdown-preview [content]="note.text"
+        ></markdown-preview>
+    </div>
+
+    <footer style="position: absolute;bottom: 1px;height: 10px;padding: 8px;width: 100%"
+            [ngClass]="getBackgroundClass()">
+        <text-status [text]="note.text" [modified]="note.lastModified"></text-status>
+    </footer>
+
+    <delete-lines-dialog [note]="note"></delete-lines-dialog>
+
+    <generate-dialog [note]="note"></generate-dialog>
+
+    <replace-dialog [note]="note"></replace-dialog>
+
+    <prepost-dialog [note]="note"></prepost-dialog>
+
+    <sequence-dialog [note]="note"></sequence-dialog>
+
+    <timestamp-dialog [note]="note"></timestamp-dialog>
+
+    <split-dialog [note]="note"></split-dialog>
+
+    <splice-dialog [note]="note"></splice-dialog>
+
+    <themes-dialog></themes-dialog>
+
+</div>

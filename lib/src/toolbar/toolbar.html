@@ -1,0 +1,21 @@
+<div class="toolbar" [ngClass]="getClass()">
+
+    <menu [menutitle]="'⚛ Start'" [items]="menus.startMenuItems" class="toolbarMenuTitle menuInit"></menu>
+
+    <menu [menutitle]="'\u{2699} Modify'" [items]="menus.modifyMenuItems" class="toolbarMenuTitle menuModify"></menu>
+
+    <menu [menutitle]="'+ Add'" [items]="menus.addMenuItems" class="toolbarMenuTitle menuAdd"></menu>
+
+    <menu [menutitle]="'- Remove'" [items]="menus.removeMenuItems" class="toolbarMenuTitle menuRemove"></menu>
+
+    <menu [menutitle]="'# Advanced'" [items]="menus.advancedMenuItems" class="toolbarMenuTitle menuAdvanced"></menu>
+
+    <menu [menutitle]="'\u{1f440} View'" [items]="menus.viewMenuItems" class="toolbarMenuTitle menuView"></menu>
+
+    <menu [menutitle]="'? Help'" [items]="menus.helpMenuItems" class="toolbarMenuTitle menuHelp"></menu>
+
+    <button class="wideToolbarButton" (click)="downloadHandler()" title="Download">{{'\u{2b07}'}} Download</button>
+
+    <button class="miniToolbarButton" (click)="undoHandler()" title="Undo previous change.">{{'\u{21a9}'}} Undo</button>
+
+</div>

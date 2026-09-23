@@ -1,0 +1,33 @@
+<div id="overlay" [hidden]="!showDialog">
+    <div class="dialogPanel" [ngClass]="getClass()+' '+getBorderClass()">
+        <div (click)="close()" class="closeCross">X</div>
+        <div class="header" [ngClass]="getHeaderClass()">Num Sequence</div>
+
+        <div style="padding-left: 150px;text-align: left" [ngClass]="getClass()">
+
+            <label style="min-width: 100px;display: inline-block">Start at</label>
+            <input type="number" [(ngModel)]="startIndex" id="startTextbox" min="1" style="width: 100px"><br/>
+
+            <label style="min-width: 100px;display: inline-block"> and repeat</label>
+            <input type="number" [(ngModel)]="repeatCount" min="10" style="width: 100px"> times<br/>
+
+            <label style="min-width: 100px;display: inline-block">adding</label>
+            <input type="number" [(ngModel)]="increment" style="width: 100px"> each time<br/>
+
+            <br/>
+            <textarea class="previewText" readonly [ngModel]="getPreview()"></textarea>
+            <div id="sequencePreviewCard" class="previewText"></div>
+
+            <div class="footer">
+                <button class="actionButton" (click)="richPreviewHandler()">Rich Preview</button>
+                <button class="actionButton" (click)="openReferenceLinkHandlerSafe()">Open As Link</button>
+                <button class="actionButton" (click)="prependText()">Prepend</button>
+                <button class="actionButton" (click)="insertCurrentPosition()">Insert</button>
+                <button class="actionButton" (click)="appendText()">Append</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button class="closeButton" (click)="closeTheDialog()" style="visibility: hidden">Peek!</button>
+                <button class="closeButton light-primary-color" (click)="closeTheDialog()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
