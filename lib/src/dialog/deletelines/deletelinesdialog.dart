@@ -1,5 +1,5 @@
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:np8080/src/dialog/common/editorcomponentbase.dart';
 import 'package:np8080/src/services/textareadomservice.dart';
 import 'package:np8080/src/services/textprocessingservice.dart';
@@ -12,8 +12,8 @@ import 'package:np8080/src/services/themeservice.dart';
     templateUrl: 'deletelinesdialog.html',
     directives: [NgModel, NgClass, formDirectives])
 class DeleteLinesDialog extends EditorComponentBase {
-  String markerText;
-  String updatedText;
+  String markerText = '';
+  String updatedText = '';
   String containOption = 'containing';
 
   DeleteLinesDialog(

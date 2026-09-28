@@ -1,6 +1,6 @@
 import 'dart:html';
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:intl/intl.dart';
 import 'package:np8080/src/dialog/common/editorcomponentbase.dart';
 import 'package:np8080/src/services/eventbusservice.dart';
@@ -21,7 +21,7 @@ import 'package:np8080/src/services/themeservice.dart';
       formDirectives
     ])
 class TimestampDialog extends EditorComponentBase {
-  final times = List<String>();
+  final times = <String>[];
   final defaultCustomFormat = 'yyyy-MM-dd EEEE h:m:ss a';
 
   var timeStamp = '';

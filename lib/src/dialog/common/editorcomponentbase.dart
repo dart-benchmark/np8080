@@ -1,7 +1,7 @@
 import 'dart:html';
 
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:np8080/src/document/textdocument.dart';
 import 'package:np8080/src/services/eventbusservice.dart';
 import 'package:np8080/src/services/textareadomservice.dart';
@@ -23,14 +23,14 @@ class EditorComponentBase extends ComponentBase {
   TextDocument note;
 
   var insertPos = -1;
-  String generatedText;
+  String generatedText = '';
 
   bool newLineAfter = false;
   bool newLineBefore = false;
 
   EditorComponentBase(this.textProcessingService, this.textareaDomService,
       ThemeService newthemeService, EventBusService newEventBusService)
-      : super(newthemeService, newEventBusService) {}
+      : note = TextDocument.detached(), super(newthemeService, newEventBusService) {}
 
   void closeTheDialog() {
     close();

@@ -1,6 +1,6 @@
 import 'dart:html';
 import 'dart:js' as js;
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:np8080/src/dialog/common/editorcomponentbase.dart';
 import 'package:np8080/src/resources/resources.dart';
 import 'package:np8080/src/services/documentservice.dart';
@@ -195,7 +195,7 @@ class Toolbar extends EditorComponentBase {
   // was matched straight to window.open(); openLinkSafeHandler() only ever
   // opens it once the scheme is confirmed to be http/https.
   // ---------------------------------------------------------------------
-  String _extractFirstLink(String text) {
+  String? _extractFirstLink(String text) {
     var match = RegExp(r'(?:https?|javascript|data|vbscript|file):\S+',
             caseSensitive: false)
         .firstMatch(text);
@@ -262,7 +262,7 @@ class Toolbar extends EditorComponentBase {
   // instance: the noopener/noreferrer feature string is the only
   // difference between the two helpers.
   // ---------------------------------------------------------------------
-  String _findBookmarkLine(String text) {
+  String? _findBookmarkLine(String text) {
     for (var line in text.split('\n')) {
       var trimmed = line.trim();
       if (trimmed.toLowerCase().startsWith('bookmark:')) {
@@ -332,7 +332,7 @@ class Toolbar extends EditorComponentBase {
   // iteration.
   // ---------------------------------------------------------------------
   void openAllLinksHandler() {
-    for (var match in RegExp(
+    for (dynamic match in RegExp(
       r'https?://\S+',
       caseSensitive: false,
     ).allMatches(note.text)) {
@@ -342,7 +342,7 @@ class Toolbar extends EditorComponentBase {
   }
 
   void openAllLinksSafeHandler() {
-    for (var match in RegExp(
+    for (dynamic match in RegExp(
       r'https?://\S+',
       caseSensitive: false,
     ).allMatches(note.text)) {
@@ -408,7 +408,7 @@ class Toolbar extends EditorComponentBase {
   // the actual HTML-building logic and its two escaped/unescaped variants.
   // ---------------------------------------------------------------------
   void searchNotesHandler() {
-    var query = window.prompt('Search all notes for:', '');
+    var query = js.context.callMethod('prompt', ['Search all notes for:', '']) as String?;
     if (query == null || query.isEmpty) return;
     var html = documentService.buildSearchSnippetHtml(query);
     var resultsDiv = querySelector('#searchResults') ??
@@ -419,7 +419,7 @@ class Toolbar extends EditorComponentBase {
   }
 
   void searchNotesSafeHandler() {
-    var query = window.prompt('Search all notes for:', '');
+    var query = js.context.callMethod('prompt', ['Search all notes for:', '']) as String?;
     if (query == null || query.isEmpty) return;
     var html = documentService.buildSearchSnippetHtmlSafe(query);
     var resultsDiv = querySelector('#searchResultsSafe') ??

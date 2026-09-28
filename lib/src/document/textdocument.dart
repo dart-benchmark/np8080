@@ -6,22 +6,22 @@ const defaultFilename = 'np8080';
 const defaultFileExtension = 'txt';
 
 class TextDocument {
-  final _undoText = List<String>();
+  final _undoText = <String>[];
 
   final int _id;
   var _text = '';
-  String _downloadName;
-  DateTime _lastModified;
-
+  String _downloadName = defaultDownloadName;
+  DateTime? _lastModified;
+  TextDocument.detached() : _id = 0;
   TextDocument(this._id) {
     initText();
     initLastModifiedDate();
     initDownloadName();
   }
 
-  DateTime get lastModified => _lastModified;
+  DateTime? get lastModified => _lastModified;
 
-  void set lastModified(DateTime lastModified) {
+  void set lastModified(DateTime? lastModified) {
     _lastModified = lastModified;
   }
 
@@ -47,12 +47,12 @@ class TextDocument {
 
   void initText() {
     _text = storedText;
-    if (_text == null) _text = welcomeText;
+    if (loadNullableValue('id$_id') == null) _text = welcomeText;
   }
 
   void initDownloadName() {
     _downloadName = loadValue('dn$_id', null);
-    if (_downloadName == null) generateDownloadName();
+    if (loadNullableValue('dn$_id') == null) generateDownloadName();
   }
 
   void generateDownloadName() {
@@ -65,7 +65,7 @@ class TextDocument {
   }
 
   void initLastModifiedDate() {
-    var lms = loadValue('lm$_id', null);
+    var lms = loadNullableValue('lm$_id');
 
     if (lms != null) {
       lastModified = DateTime.parse(lms);
@@ -103,7 +103,7 @@ class TextDocument {
     updateModifiedDate();
     storeValue('id$_id', _text);
     storeValue('dn$_id', _downloadName);
-    storeValue('lm$_id', lastModified.toIso8601String());
+    storeValue('lm$_id', lastModified!.toIso8601String());
   }
 
   void undo() {

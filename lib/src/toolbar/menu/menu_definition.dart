@@ -3,13 +3,13 @@ import 'package:np8080/src/toolbar/menu/menu.dart';
 import 'package:np8080/src/toolbar/toolbar.dart';
 
 class MenuDefinition {
-  final startMenuItems = List<Menu>();
-  final modifyMenuItems = List<Menu>();
-  final addMenuItems = List<Menu>();
-  final removeMenuItems = List<Menu>();
-  final advancedMenuItems = List<Menu>();
-  final viewMenuItems = List<Menu>();
-  final helpMenuItems = List<Menu>();
+  final startMenuItems = <Menu>[];
+  final modifyMenuItems = <Menu>[];
+  final addMenuItems = <Menu>[];
+  final removeMenuItems = <Menu>[];
+  final advancedMenuItems = <Menu>[];
+  final viewMenuItems = <Menu>[];
+  final helpMenuItems = <Menu>[];
 
   void buildMenus(Toolbar toolbar) {
     startMenuItems.addAll([
@@ -174,7 +174,7 @@ class MenuDefinition {
   }
 
   void buildManual() {
-    var allMenus = List<Menu>();
+    var allMenus = <Menu>[];
     var blank = Menu(' ');
 
     allMenus.add(Menu("Start Menu"));

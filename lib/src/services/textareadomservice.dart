@@ -1,28 +1,28 @@
 import 'dart:html';
 import 'dart:async';
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 @Injectable()
 class TextareaDomService {
   final String _id = '#nptextbox';
 
-  TextAreaElement nptb;
+  TextAreaElement? nptb;
 
   TextareaSelection getCurrentSelectionInfo() {
     var sel = TextareaSelection();
     sel
-      ..start = textArea.selectionStart
-      ..end = textArea.selectionEnd
-      ..text = textArea.value.substring(sel.start, sel.end);
+      ..start = textArea.selectionStart!
+      ..end = textArea.selectionEnd!
+      ..text = textArea.value!.substring(sel.start, sel.end);
 
     return sel;
   }
 
   TextAreaElement get textArea {
     if (nptb == null) {
-      nptb = querySelector(_id);
+      nptb = querySelector(_id) as TextAreaElement?;
     }
-    return nptb;
+    return nptb!;
   }
 
   void setCursorPosition(int pos) => textArea?.setSelectionRange(pos, pos);
@@ -41,11 +41,11 @@ class TextareaDomService {
 
   void setText(String txt) => textArea.value = txt;
 
-  String getText() => textArea.value;
+  String getText() => textArea.value ?? '';
 }
 
 class TextareaSelection {
-  int start;
-  int end;
-  String text;
+  int start = 0;
+  int end = 0;
+  String text = '';
 }

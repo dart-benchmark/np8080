@@ -1,7 +1,7 @@
 import 'dart:html';
 
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:np8080/src/dialog/common/editorcomponentbase.dart';
 import 'package:np8080/src/dialog/deletelines/deletelinesdialog.dart';
 import 'package:np8080/src/dialog/generate/generatedialog.dart';
@@ -48,10 +48,10 @@ import 'package:np8080/src/toolbar/toolbar.dart';
   formDirectives
 ])
 class EditorComponent extends EditorComponentBase implements AfterContentInit {
-  final _undoPositions = List<int>();
+  final _undoPositions = <int>[];
 
   @Input()
-  TextDocument note;
+  late TextDocument note;
 
   var showPreview = false;
 

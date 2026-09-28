@@ -1,0 +1,10 @@
+name: minibus
+description: An easy to use minimal synchronous event bus to keep your application components decoupled and resusable.
+# Vendored copy of package:minibus 0.0.4 (the version np8080's lockfile
+# pinned), migrated to null safety so it builds on Dart 3. Original author:
+# Davy Mitchell <daftspaniel@gmail.com>, BSD licensed (see LICENSE).
+version: 0.0.4+nullsafety
+homepage: https://gitlab.com/daftspaniel/minibus
+publish_to: none
+environment:
+  sdk: '>=3.1.0 <4.0.0'

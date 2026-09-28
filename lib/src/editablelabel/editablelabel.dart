@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:html';
 
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:np8080/src/dialog/common/componentbase.dart';
 import 'package:np8080/src/document/textdocument.dart';
 import 'package:np8080/src/services/eventbusservice.dart';
@@ -17,13 +17,13 @@ class EditableLabel extends ComponentBase implements OnInit {
 
   var editMode = false;
   var tabFocused = false;
-  String outputText;
+  String outputText = '';
 
   @Input()
-  String text;
+  String text = '';
 
   @Input()
-  int id;
+  int id = 0;
 
   @Output()
   Stream<String> get textChange => onTextChange.stream;
@@ -82,7 +82,7 @@ class EditableLabel extends ComponentBase implements OnInit {
     editMode = !editMode;
     if (editMode) {
       var tb = querySelector("#editbox$id");
-      tb.focus();
+      tb?.focus();
     } else if (text.length == 0) {
       reset();
     }

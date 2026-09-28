@@ -1,5 +1,5 @@
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:np8080/src/dialog/common/componentbase.dart';
 import 'package:np8080/src/document/textdocument.dart';
 import 'package:np8080/src/services/eventbusservice.dart';
@@ -18,27 +18,27 @@ class DualReaderView extends ComponentBase implements AfterContentInit {
   }
 
   @Input()
-  TextDocument note1;
+  late TextDocument note1;
 
   @Input()
-  TextDocument note2;
+  late TextDocument note2;
 
   var lockScrolling = true;
-  TextAreaElement rightText;
-  TextAreaElement leftText;
+  TextAreaElement? rightText;
+  TextAreaElement? leftText;
 
   void showReader() => show();
 
   scrollLeft(var e) {
-    if (lockScrolling) rightText.scrollTop = leftText.scrollTop;
+    if (lockScrolling) rightText!.scrollTop = leftText!.scrollTop;
   }
 
   scrollRight(var e) {
-    if (lockScrolling) leftText.scrollTop = rightText.scrollTop;
+    if (lockScrolling) leftText!.scrollTop = rightText!.scrollTop;
   }
 
   void ngAfterContentInit() {
-    rightText = querySelector('#rightText');
-    leftText = querySelector('#leftText');
+    rightText = querySelector('#rightText') as TextAreaElement?;
+    leftText = querySelector('#leftText') as TextAreaElement?;
   }
 }

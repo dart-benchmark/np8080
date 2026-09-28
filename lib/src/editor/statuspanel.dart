@@ -1,6 +1,6 @@
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:np8080/src/dialog/common/editorcomponentbase.dart';
 import 'package:np8080/src/services/eventbusservice.dart';
 import 'package:np8080/src/services/textareadomservice.dart';
@@ -22,10 +22,10 @@ class StatusPanel extends EditorComponentBase {
             newEventBusService);
 
   @Input('text')
-  String text;
+  String text = '';
 
   @Input('modified')
-  DateTime modified;
+  DateTime? modified;
 
   String get length => text.length.toString();
 

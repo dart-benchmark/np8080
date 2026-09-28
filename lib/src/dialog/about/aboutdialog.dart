@@ -1,4 +1,4 @@
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 
 import 'package:np8080/src/dialog/common/componentbase.dart';
 import 'package:np8080/src/resources/resources.dart';

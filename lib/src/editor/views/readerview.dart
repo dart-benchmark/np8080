@@ -1,5 +1,5 @@
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:np8080/src/dialog/common/componentbase.dart';
 import 'package:np8080/src/document/textdocument.dart';
 import 'package:np8080/src/services/eventbusservice.dart';
@@ -16,7 +16,7 @@ class ReaderView extends ComponentBase {
   }
 
   @Input()
-  TextDocument note;
+  late TextDocument note;
 
   void showReader() {
     show();

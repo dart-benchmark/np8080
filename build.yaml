@@ -1,0 +1,41 @@
+# AngularDart (ngdart) template compilation.
+#
+# ngdart's own builder is optional and only runs when build_web_compilers
+# asks for its outputs; build_web_compilers does not support the current Dart
+# SDK, so the same ngdart builder factories are registered here to write the
+# generated *.template.dart files into the source tree. Regenerate them with:
+#
+#   dart run build_runner build --delete-conflicting-outputs
+#
+# and then compile the app with `dart compile js web/main.dart`.
+targets:
+  $default:
+    builders:
+      ngdart:
+        enabled: false
+      ngdart|placeholder_cleanup:
+        enabled: false
+      ngdart|component_source_cleanup:
+        enabled: false
+      np8080:ng_placeholder:
+        generate_for: ["lib/**.dart", "web/*.dart"]
+      np8080:ng_template:
+        generate_for: ["lib/**", "web/*.dart"]
+
+builders:
+  ng_placeholder:
+    import: "package:ngdart/src/build.dart"
+    builder_factories: [templatePlaceholder]
+    build_extensions: {".dart": [".ng_placeholder"]}
+    auto_apply: root_package
+    build_to: cache
+    runs_before: ["np8080:ng_template"]
+  ng_template:
+    import: "package:ngdart/src/build.dart"
+    builder_factories: [stylesheetCompiler, templateCompiler]
+    build_extensions:
+      ".css": [".css.dart", ".css.shim.dart"]
+      ".dart": [".template.dart"]
+    auto_apply: root_package
+    build_to: source
+    required_inputs: [".css", ".ng_placeholder"]

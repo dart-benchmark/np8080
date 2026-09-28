@@ -1,7 +1,7 @@
 import 'dart:html';
 
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:np8080/src/dialog/common/editorcomponentbase.dart';
 import 'package:np8080/src/services/eventbusservice.dart';
 import 'package:np8080/src/services/textareadomservice.dart';
@@ -13,10 +13,10 @@ import 'package:np8080/src/services/themeservice.dart';
     templateUrl: 'markdownpreview.html',
     directives: [NgModel, NgStyle, NgClass])
 class MarkdownPreview extends EditorComponentBase
-    implements AfterContentInit, OnChanges {
+    implements AfterContentInit, AfterChanges {
   final _nullSanitizer = NullTreeSanitizer();
 
-  DivElement _htmlDiv;
+  DivElement? _htmlDiv;
 
   MarkdownPreview(
       TextProcessingService newTextProcessingService,
@@ -43,12 +43,12 @@ class MarkdownPreview extends EditorComponentBase
 
   bool active = false;
 
-  ngOnChanges(Map<String, SimpleChange> changes) {
+  void ngAfterChanges() {
     if (active) updatePreview();
   }
 
   void ngAfterContentInit() {
-    _htmlDiv ??= querySelector('#previewPane');
+    _htmlDiv ??= querySelector('#previewPane') as DivElement?;
   }
 
   void updatePreview() {
@@ -98,7 +98,7 @@ class MarkdownPreview extends EditorComponentBase
   // ---------------------------------------------------------------------
   String _firstHeadingOrUntitled(String markdown) {
     var match = RegExp(r'^#{1,6}\s+(.*)$', multiLine: true).firstMatch(markdown);
-    return match != null ? match.group(1) : 'Untitled';
+    return match != null ? match.group(1)! : 'Untitled';
   }
 
   void showTitleBubble() {

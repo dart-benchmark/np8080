@@ -1,0 +1,14 @@
+name: stringprocess
+description: A string library for common string operations and general text processing functions.
+# Vendored copy of package:stringprocess 1.0.7 (the version np8080's lockfile
+# pinned), migrated to null safety so it builds on Dart 3. Original author:
+# Davy Mitchell <daftspaniel@gmail.com>, BSD licensed (see LICENSE).
+version: 1.0.7+nullsafety
+homepage: https://github.com/daftspaniel/stringprocess/
+publish_to: none
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  html_unescape: ^2.0.0
+  markdown: ^7.1.1

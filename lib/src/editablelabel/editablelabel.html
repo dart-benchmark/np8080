@@ -1,6 +1,6 @@
-<div class="edit-label" [ngStyle]="{'opacity': tabFocused ? '1' : '0.55'}">
+<div class="edit-label" [style.opacity]="tabFocused ? '1' : '0.55'">
     <div style="font-size:2pt" [hidden]="!editMode">&nbsp;</div>
-    <input type="text" [(ngModel)]="text" [ngStyle]="{'height': editMode ? '20px':'0'}"
+    <input type="text" [(ngModel)]="text" [style.height]="editMode ? '20px':'0'"
            (keyup)="update()" (blur)="exitEdit()"
            (keyup.enter)="toggle()"
            tabindex="2" id="editbox{{id}}" style="background-color:beige;width:100%;border:0;padding:0;"/>

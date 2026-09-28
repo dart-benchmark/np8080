@@ -7,6 +7,6 @@
             &nbsp;&nbsp;&nbsp;&nbsp;
         Sentences: {{sentenceCount}} </span>
     <span [hidden]="isHttps()" style="background-color:#119011;color:white">WARNING : Please download your doc & update the Url to HTTPS!</span>
-    <span class="rhsStatus" *ngIf="modified!=null">Modified: {{modified|  date:'mediumTime' | uppercase }}</span>
+    <span class="rhsStatus" *ngIf="modified!=null">Modified: {{$pipe.uppercase($pipe.date(modified, 'mediumTime'))}}</span>
     <span class="rhsStatus" (click)="showPeekSafe()" title="Peek at note (safe)">🔍</span>
 </div>

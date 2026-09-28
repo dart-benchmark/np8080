@@ -10,14 +10,17 @@ String getNp8080Store() {
 
 void saveStore(Map store) => window.localStorage[np8080] = json.encode(store);
 
-String loadValue(String key, String defaultValue) {
+String loadValue(String key, String? defaultValue) {
   var store = getStorageAsMap();
   var value = store[key];
   if (value == null) {
     value = defaultValue;
   }
-  return value;
+  return value ?? '';
 }
+
+/// Returns the stored value for [key], or null when nothing is stored.
+String? loadNullableValue(String key) => getStorageAsMap()[key];
 
 Map getStorageAsMap() {
   var store = json.decode(getNp8080Store());

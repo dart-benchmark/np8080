@@ -1,5 +1,5 @@
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:np8080/src/dialog/common/editorcomponentbase.dart';
 import 'package:np8080/src/services/eventbusservice.dart';
 import 'package:np8080/src/services/textareadomservice.dart';
@@ -21,7 +21,7 @@ class GenerateDialog extends EditorComponentBase {
       TextareaDomService newTextareaDomService,
       ThemeService newThemeService,
       EventBusService newEventBusService)
-      : super(newTextProcessingService, newTextareaDomService, newThemeService,
+      : textToRepeat = '', super(newTextProcessingService, newTextareaDomService, newThemeService,
             newEventBusService) {
     eventBusService.subscribe("showGenerateDialog", initialiseAndShow);
   }

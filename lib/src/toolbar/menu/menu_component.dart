@@ -1,5 +1,5 @@
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:np8080/src/dialog/common/componentbase.dart';
 import 'package:np8080/src/services/eventbusservice.dart';
 import 'package:np8080/src/services/themeservice.dart';
@@ -15,14 +15,14 @@ class MenuComponent extends ComponentBase {
       : super(newthemeService, newEventBusService);
 
   @Input('menutitle')
-  String menutitle;
+  String menutitle = '';
 
   @Input('items')
-  List<Menu> items;
+  List<Menu> items = [];
 
-  void menuClick(Function handler) {
+  void menuClick(Function? handler) {
     close();
-    handler();
+    if (handler != null) handler();
   }
 
   String getMenuClass() =>

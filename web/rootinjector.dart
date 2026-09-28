@@ -1,4 +1,4 @@
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 // ignore: uri_has_not_been_generated
 import 'rootinjector.template.dart' as mainng;
 

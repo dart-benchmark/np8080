@@ -1,15 +1,15 @@
 import 'dart:html';
 
-import 'package:angular/angular.dart';
+import 'package:ngdart/angular.dart';
 import 'package:np8080/src/document/textdocument.dart';
 import 'package:np8080/src/services/textareadomservice.dart';
 import 'package:np8080/src/storage/localstorage.dart';
 
 @Injectable()
 class DocumentService {
-  final _allNotes = List<TextDocument>();
+  final _allNotes = <TextDocument>[];
   var _textareaDomService;
-  TextDocument _activeNote;
+  late TextDocument _activeNote;
   int _activeNoteId = 0;
 
   DocumentService(TextareaDomService textareaDomService) {
@@ -21,7 +21,7 @@ class DocumentService {
     document.title = _activeNote.downloadName;
   }
 
-  get activeNote => _activeNote;
+  TextDocument get activeNote => _activeNote;
 
   TextDocument getNote(int index) => _allNotes[index];
 
@@ -75,7 +75,7 @@ class DocumentService {
   // caller in toolbar.dart is what decides the window-feature string,
   // not this method.
   // ---------------------------------------------------------------------
-  String resolveNoteReferenceLink(TextDocument note) {
+  String? resolveNoteReferenceLink(TextDocument note) {
     var match = RegExp(
       r'https?://\S+',
       caseSensitive: false,

@@ -1,5 +1,5 @@
-import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
+import 'package:ngdart/angular.dart';
+import 'package:ngforms/ngforms.dart';
 import 'package:np8080/src/dialog/common/editorcomponentbase.dart';
 import 'package:np8080/src/services/eventbusservice.dart';
 import 'package:np8080/src/services/textareadomservice.dart';
@@ -12,9 +12,9 @@ import 'package:np8080/src/services/themeservice.dart';
     templateUrl: 'replacedialog.html',
     directives: [NgClass, NgModel, NgStyle, formDirectives])
 class ReplaceDialog extends EditorComponentBase {
-  String textToReplace;
-  String replacementText;
-  String updatedText;
+  String textToReplace = '';
+  String replacementText = '';
+  String updatedText = '';
 
   var _positionClass = "defaultpos";
 
